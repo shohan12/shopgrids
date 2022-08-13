@@ -1,0 +1,13 @@
+ $data= new Image();
+   
+
+    if($request->file('image')){
+        $image= $request->file('image');
+        $imagename= date('YmdHi').$image->getClientOriginalName();
+        $image-> move(public_path('public/Image'), $imagename);
+        $data['image']= $imagename;
+    }
+    $data->save();
+    return redirect('/image');
+   
+}
